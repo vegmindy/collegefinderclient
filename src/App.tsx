@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import React from 'react';
+// import {Auth} from "./Components/index"
+// import { Route, BrowserRouter as Router } from "react-router-dom"
 
-function App() {
+// function App() {
+//   return (
+//     <div className="App">
+//           <Router>
+//             <Route path="/login" component={Auth} />
+//             <Route path="/logout" component={Auth} />
+//           </Router>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+import React from 'react';
+import {Auth} from "./Components/index"
+import { Route, BrowserRouter as Router } from "react-router-dom"
+import Navbar from './Components/Navbar/Navbar'
+
+const App: React.FC = () => {
+
+  // let token = localStorage.getitem("sessionToken")
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+          <Router>
+            <Route path="/login" component={Auth} />
+            {/* <Route path="/logout" component={Auth} /> */}
+          </Router>
+          <p>Hello</p>
     </div>
   );
 }
 
 export default App;
+
