@@ -20,18 +20,18 @@
 // export default App;
 
 
-import React from 'react';
-import AppIndex from './AppIndex';
+// import React from 'react';
+// import AppIndex from './AppIndex';
 
-function App() {
-  return (
-    <React.Fragment>
-      <AppIndex />
-    </React.Fragment>
-  );
-}
+// function App() {
+//   return (
+//     <React.Fragment>
+//       <AppIndex />
+//     </React.Fragment>
+//   );
+// }
 
-export default App;
+// export default App;
 
 
 // import React, {Component} from 'react';
@@ -91,3 +91,17 @@ export default App;
 // }
 
 // export default App
+
+
+import React from 'react';
+import AppIndex from './appIndex';
+
+function App() {
+  return (
+    <React.Fragment>
+      <AppIndex />
+    </React.Fragment>
+  );
+}
+
+export default App;
