@@ -57,7 +57,8 @@ import NavbBar from './Navbar/Navbar';
 import SignUp from './Auth/signup'
 import Home from './Home';
 import Login from './Auth/login';
-import Accepted from './Accepted/accepted'
+import Accepted from './Accepted/addAccepted'
+import Favorites from './Favorites/favorites'
 
 
 const useStyles = makeStyles(()=>
@@ -86,7 +87,8 @@ const Main = (props: Props) => {
                         <Route exact path='/home' render={()=>(<Home />)} />
                         <Route exact path='/signup' render={()=>(<SignUp updateToken={props.updateToken} />)} />
                         <Route exact path='/login' render={()=>(<Login updateToken={props.updateToken} />)} />
-                        <Route exact path='/accepted/addschool' render={()=>(<Accepted updateToken={props.updateToken} />)} />
+                        <Route exact path='/accepted/addschool' render={()=>(<Accepted token={props.token} />)} />
+                        <Route exact path='/favorites/addschool' render={()=>(<Favorites token={props.token} />)} />
                     </Switch>
                     </div>
                 </Router>

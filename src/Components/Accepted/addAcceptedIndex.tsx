@@ -12,10 +12,11 @@ type AcceptedState = {
 }
 
 interface Props {
-    updateToken: (newToken: string) => void
+    // updateToken: (newToken: string) => void
+    token: string | null
 }
 
-export default class AcceptedIndex extends Component<Props, AcceptedState>{
+export default class AddAcceptedIndex extends Component<Props, AcceptedState>{
     constructor(props: Props) {
         super(props)
         this.state = {
@@ -71,6 +72,10 @@ export default class AcceptedIndex extends Component<Props, AcceptedState>{
         })
     }
 
+    componentDidMount() {
+        console.log("addSchool didMount: ", this.props.token);
+      }
+
     addAccepted(e: any) {
         e.preventDefault();
         fetch('http://localhost:3000/accepted/addschool', {
@@ -86,14 +91,14 @@ export default class AcceptedIndex extends Component<Props, AcceptedState>{
             }),
             headers: new Headers({
                 'Content-Type': 'application/json',
-                'Authorization': `${localStorage.getItem('token')}`
+                // 'Authorization': `${localStorage.getItem('token')}`
+                'Authorization': `${this.props.token}`,
             })
         })
-        // .then((response) => response.json())
-        //     .then((data) => {
-        //         this.props.updateToken(data.token)
-        //         // setSubmitSuccess
-        //     })
+        .then((response) => response.json())
+            .then((data) => {
+                console.log(data)
+            })
     }
 
     render() {
