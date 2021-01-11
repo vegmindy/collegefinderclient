@@ -1,30 +1,3 @@
-// import React, { Component } from 'react';
-// import SchoolDisplay from './schoolDisplay';
-
-
-// type FetchResults = {
-//     search: string,
-//     pageNumber: number,
-//     results: any,
-// };
-
-// class DisplayResults extends Component<{}, FetchResults> {
-//     constructor(props: any) {
-//         super(props)
-//         this.state = {
-//             search: '',
-//             pageNumber: 0,
-//             results: [], 
-//         };
-//     }
-//     searchFunction(event: any) {
-//         this.setState({
-//             search: (event)
-//         })
-//     }
-// }
-
-
 import React, { Component } from 'react';
 import SchoolDisplay from './schoolDisplay';
 
@@ -43,9 +16,9 @@ const baseURL = 'http://localhost:3000/schools/all';
 
 // console.log(results)
 console.log("hello1")
-class DisplayResults extends Component<{}, FetchResults> {
+export default class SchoolSearch extends Component<{}, FetchResults> {
     
-    constructor(props: any) {
+    constructor(props: Props) {
         super(props)
         this.state = {
             search: '',
@@ -63,21 +36,24 @@ class DisplayResults extends Component<{}, FetchResults> {
 
 
     fetchResults = () => {
-        // let url = `${baseURL}?api-key=${key}&page=${this.state.pageNumber}&q=${this.state.search}`;
-        // let url = baseURL;
 
-        console.log("hello2")
-        fetch(baseURL)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                this.setState({
-                    results: data
-                })
-            }) .catch (( error) =>
-            console.log(error)
-            )
-    }
+    fetch(baseURL, {
+        method: 'POST',
+        headers: new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': `${this.props.token}`,
+        })
+        
+    }) .then(res => res.json())
+    .then(data => {
+        console.log(data)
+        this.setState({
+            results: data
+        })
+    }) .catch (( error) =>
+    console.log(error)
+    )
+}
 
     
 
@@ -124,4 +100,4 @@ class DisplayResults extends Component<{}, FetchResults> {
     }
 }
 
-export default DisplayResults;
+// export default SchoolSearch;

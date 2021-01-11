@@ -51,7 +51,7 @@
 import React from 'react'
 import {createStyles, makeStyles} from '@material-ui/core/styles';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import NavbBar from './Navbar/Navbar';
+import NavBar from './Navbar/Navbar';
 
 
 import SignUp from './Auth/signup'
@@ -83,14 +83,14 @@ const Main = (props: Props) => {
             <React.Fragment>
                 <Router>
                     <div className={classes.mainDiv}>
-                     <NavbBar clearToken={props.clearToken} />
+                     <NavBar clearToken={props.clearToken} />
                     <Switch>
                         <Route exact path='/home' render={()=>(<Home />)} />
                         <Route exact path='/signup' render={()=>(<SignUp updateToken={props.updateToken} />)} />
                         <Route exact path='/login' render={()=>(<Login updateToken={props.updateToken} />)} />
                         <Route exact path='/accepted/addschool' render={()=>(<Accepted token={props.token} />)} />
                         <Route exact path='/favorites/addschool' render={()=>(<Favorites token={props.token} />)} />
-                        <Route exact path='/schools/all' render={()=>(<SchoolSearch /> )}/>
+                        <Route exact path='/schools/all' render={()=>(<SchoolSearch token={props.token} /> )}/>
                     </Switch>
                     </div>
                 </Router>
