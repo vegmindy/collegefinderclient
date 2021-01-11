@@ -4,8 +4,8 @@ import { TextField, Button} from '@material-ui/core';
 type AcceptedState = {
     schoolName: string,
     address: string,
-    inState: boolean,
-    accepted: boolean,
+    inState: string,
+    accepted: string,
     pros: string,
     cons: string,
     notes: string,
@@ -22,61 +22,61 @@ export default class AddAcceptedIndex extends Component<Props, AcceptedState>{
         this.state = {
             schoolName: '',
             address: '',
-            inState: true,
-            accepted: true,
+            inState: '',
+            accepted: '',
             pros: '',
             cons: '',
             notes: '',
         }
     }
 
-    setSchoolName(e: any) {
+    setSchoolName(e: string) {
         this.setState({
             schoolName: (e)
         })
     }
 
-    setAddress(e: any) {
+    setAddress(e: string) {
         this.setState({
             address: (e)
         })
     }
 
-    setInState(e: any) {
+    setInState(e: string) {
         this.setState({
             inState: (e)
         })
     }
 
-    setAccepted(e: any) {
+    setAccepted(e: string) {
         this.setState({
             accepted: (e)
         })
     }
 
-    setPros(e: any) {
+    setPros(e: string) {
         this.setState({
             pros: (e)
         })
     }
 
-    setCons(e: any) {
+    setCons(e: string) {
         this.setState({
             cons: (e)
         })
     }
 
-    setNotes(e: any) {
+    setNotes(e: string) {
         this.setState({
             notes: (e)
         })
     }
 
     componentDidMount() {
-        console.log("addSchool didMount: ", this.props.token);
+        console.log(this.props.token);
       }
 
-    addAccepted(e: any) {
+    addAccepted(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         fetch('http://localhost:3000/accepted/addschool', {
             method: 'POST',
@@ -105,14 +105,13 @@ export default class AddAcceptedIndex extends Component<Props, AcceptedState>{
         return (
             <div>
                 <form onSubmit={(e)=>this.addAccepted(e)} >
-                    <TextField id="outlined-basic" label="School Name" variant="outlined" onChange={(e)=>this.setSchoolName(e.target.value)} />
-                    <TextField id="outlined-basic" label="School Address" variant="outlined"
-                    onChange={(e)=>this.setAddress(e.target.value)} />
-                    <TextField id="outlined-basic" label="In state?(true or false)" variant="outlined" onChange={(e)=>this.setInState(e.target.value)} />
-                    <TextField id="outlined-basic" label="Accepted? (true or false)" variant="outlined" onChange={(e)=>this.setAccepted(e.target.value)} />
-                    <TextField id="outlined-basic" label="Pros" variant="outlined" onChange={(e)=>this.setPros(e.target.value)} />
-                    <TextField id="outlined-basic" label="Cons" variant="outlined" onChange={(e)=>this.setCons(e.target.value)} />
-                    <TextField id="outlined-basic" label="Notes" variant="outlined" onChange={(e)=>this.setNotes(e.target.value)} />
+                    <TextField id="outlined-basic" label="School Name" variant="outlined" onChange={(e)=>this.setState({schoolName: (e.target.value)})} />
+                    <TextField id="outlined-basic" label="School Address" variant="outlined" onChange={(e)=>this.setState({address: (e.target.value)})} />
+                    <TextField id="outlined-basic" label="In state?(true or false)" variant="outlined" onChange={(e)=>this.setState({inState: (e.target.value)})} />
+                    <TextField id="outlined-basic" label="Accepted? (true or false)" variant="outlined" onChange={(e)=>this.setState({accepted: (e.target.value)})} />
+                    <TextField id="outlined-basic" label="Pros" variant="outlined" onChange={(e)=>this.setState({pros: (e.target.value)})} />
+                    <TextField id="outlined-basic" label="Cons" variant="outlined" onChange={(e)=>this.setState({cons: (e.target.value)})} />
+                    <TextField id="outlined-basic" label="Notes" variant="outlined" onChange={(e)=>this.setState({notes: (e.target.value)})} />
                     <Button type='submit' variant="contained">Add school</Button>
                 </form>
             </div>

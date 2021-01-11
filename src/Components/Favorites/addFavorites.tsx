@@ -1,7 +1,7 @@
 import React from 'react';  
 import { createStyles, makeStyles } from '@material-ui/core/styles'
 import { Container } from '@material-ui/core'
-import FavoritesIndex from './favoritesIndex';
+import AddFavoritesIndex from './addFavoritesIndex';
 
 const useStyles = makeStyles(() =>
     createStyles({
@@ -27,7 +27,7 @@ const AddFavorites = (props: Props) => {
         <Container className={classes.container}>
             <div>
                 <h1>Add school</h1>
-                <FavoritesIndex token={props.token} />
+                <AddFavoritesIndex token={props.token} />
             </div>
         </Container>
     )

@@ -95,19 +95,20 @@ const NavbBar = (props: Props) => {
     const classes = useStyles();
 
     return (
-        <AppBar position='fixed'>
-            <Toolbar>
-                <Grid container spacing={3}>
-                    <Grid item xs>
-                        <Link to='home'>Home</Link>
-                    </Grid>
-                    <Grid item xs={6}></Grid>
-                    <Grid item xs className={classes.loginButton}>
-                        <Auth clearToken={props.clearToken} />
-                    </Grid>
-                </Grid>
-            </Toolbar>
-        </AppBar>
+        // <AppBar position='fixed'>
+        //     <Toolbar>
+        //         <Grid container spacing={3}>
+        //             <Grid item xs>
+        //                 <Link to='home'>Home</Link>
+        //             </Grid>
+        //             <Grid item xs={6}></Grid>
+        //             <Grid item xs className={classes.loginButton}>
+        //                 <Auth clearToken={props.clearToken} />
+        //             </Grid>
+        //         </Grid>
+        //     </Toolbar>
+        // </AppBar>
+        <p>nav bar goes here</p>
     )
 }
 

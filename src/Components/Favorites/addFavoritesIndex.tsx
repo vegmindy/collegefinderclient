@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, ReactHTML } from 'react';
 import { TextField, Button} from '@material-ui/core';
 
-type AcceptedState = {
+type FavoritesState = {
     schoolName: string,
     address: string,
-    inState: boolean,
+    inState: string,
     notes: string
 }
 
@@ -13,42 +13,42 @@ interface Props {
     token: string | null
 }
 
-export default class AcceptedIndex extends Component<Props, AcceptedState>{
+export default class AddFavoritesIndex extends Component<Props, FavoritesState>{
     constructor(props: Props) {
         super(props)
         this.state = {
             schoolName: '',
             address: '',
-            inState: true,
+            inState: '',
             notes: ''
         }
     }
 
-    setSchoolName(e: any) {
+    setSchoolName(e: string) {
         this.setState({
             schoolName: (e)
         })
     }
 
-    setAddress(e: any) {
+    setAddress(e: string) {
         this.setState({
             address: (e)
         })
     }
 
-    setInState(e: any) {
+    setInState(e: string) {
         this.setState({
             inState: (e)
         })
     }
 
-    setNotes(e: any) {
+    setNotes(e: string) {
         this.setState({
             notes: (e)
         })
     }
 
-    addAccepted(e: any) {
+    addFavorites(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         fetch('http://localhost:3000/favorites/addschool', {
             method: 'POST',
@@ -78,12 +78,11 @@ export default class AcceptedIndex extends Component<Props, AcceptedState>{
     render() {
         return (
             <div>
-                <form onSubmit={(e)=>this.addAccepted(e)} >
-                    <TextField id="outlined-basic" label="School Name" variant="outlined" onChange={(e)=>this.setSchoolName(e.target.value)} />
-                    <TextField id="outlined-basic" label="School Address" variant="outlined"
-                    onChange={(e)=>this.setAddress(e.target.value)} />
-                    <TextField id="outlined-basic" label="In state?(true or false)" variant="outlined" onChange={(e)=>this.setInState(e.target.value)} />
-                    <TextField id="outlined-basic" label="Notes" variant="outlined" onChange={(e)=>this.setNotes(e.target.value)} />
+                <form onSubmit={(e)=>this.addFavorites(e)} >
+                    <TextField id="outlined-basic" label="School Name" variant="outlined" onChange={(e)=>this.setState({schoolName: (e.target.value)})} />
+                    <TextField id="outlined-basic" label="School Address" variant="outlined" onChange={(e)=>this.setState({address: (e.target.value)})} />
+                    <TextField id="outlined-basic" label="In state?(true or false)" variant="outlined" onChange={(e)=>this.setState({inState: (e.target.value)})} />
+                    <TextField id="outlined-basic" label="Notes" variant="outlined" onChange={(e)=>this.setState({notes: (e.target.value)})} />
                     <Button type='submit' variant="contained">Add school</Button>
                 </form>
             </div>

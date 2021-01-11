@@ -58,7 +58,8 @@ import SignUp from './Auth/signup'
 import Home from './Home';
 import Login from './Auth/login';
 import Accepted from './Accepted/addAccepted'
-import Favorites from './Favorites/favorites'
+import Favorites from './Favorites/addFavorites'
+import SchoolSearch from './Schools/schools'
 
 
 const useStyles = makeStyles(()=>
@@ -89,6 +90,7 @@ const Main = (props: Props) => {
                         <Route exact path='/login' render={()=>(<Login updateToken={props.updateToken} />)} />
                         <Route exact path='/accepted/addschool' render={()=>(<Accepted token={props.token} />)} />
                         <Route exact path='/favorites/addschool' render={()=>(<Favorites token={props.token} />)} />
+                        <Route exact path='/schools/all' render={()=>(<SchoolSearch /> )}/>
                     </Switch>
                     </div>
                 </Router>

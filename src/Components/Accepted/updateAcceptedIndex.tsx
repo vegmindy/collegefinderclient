@@ -4,8 +4,8 @@ import { TextField, Button} from '@material-ui/core';
 type AcceptedState = {
     schoolName: string,
     address: string,
-    inState: boolean,
-    accepted: boolean,
+    inState: string,
+    accepted: string,
     pros: string,
     cons: string,
     notes: string,
@@ -22,51 +22,51 @@ export default class AddAcceptedIndex extends Component<Props, AcceptedState>{
         this.state = {
             schoolName: '',
             address: '',
-            inState: true,
-            accepted: true,
+            inState: '',
+            accepted: '',
             pros: '',
             cons: '',
             notes: '',
         }
     }
 
-    setSchoolName(e: any) {
+    setSchoolName(e: string) {
         this.setState({
             schoolName: (e)
         })
     }
 
-    setAddress(e: any) {
+    setAddress(e: string) {
         this.setState({
             address: (e)
         })
     }
 
-    setInState(e: any) {
+    setInState(e: string) {
         this.setState({
             inState: (e)
         })
     }
 
-    setAccepted(e: any) {
+    setAccepted(e: string) {
         this.setState({
             accepted: (e)
         })
     }
 
-    setPros(e: any) {
+    setPros(e: string) {
         this.setState({
             pros: (e)
         })
     }
 
-    setCons(e: any) {
+    setCons(e: string) {
         this.setState({
             cons: (e)
         })
     }
 
-    setNotes(e: any) {
+    setNotes(e: string) {
         this.setState({
             notes: (e)
         })
@@ -91,8 +91,8 @@ export default class AddAcceptedIndex extends Component<Props, AcceptedState>{
             }),
             headers: new Headers({
                 'Content-Type': 'application/json',
-                // 'Authorization': `${localStorage.getItem('token')}`
-                'Authorization': `${this.props.token}`,
+                'Authorization': `${localStorage.getItem('token')}`
+                // 'Authorization': `${this.props.token}`,
             })
         })
         .then((response) => response.json())

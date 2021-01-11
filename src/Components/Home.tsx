@@ -48,8 +48,12 @@ const Home = () => {
 
     return (
         <Container className={classes.container}>
-            <div>
+            {/* <div>
                 <h1>Search</h1>
+            </div> */}
+            <div>
+            <p>Prolly gonna cry here soon send help</p>
+                
             </div>
         </Container>
     )
