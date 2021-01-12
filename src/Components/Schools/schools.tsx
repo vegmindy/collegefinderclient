@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { createStyles, makeStyles } from '@material-ui/core/styles'
 import SchoolDisplay from './schoolDisplay';
+
 
 type FetchResultsState = {
     search: string,
@@ -8,7 +10,7 @@ type FetchResultsState = {
 }
 
 interface Props {
-    token: string | null
+    token: string
 }
 
 
@@ -41,7 +43,7 @@ export default class SchoolSearch extends Component<Props, FetchResultsState>{
         method: 'GET',
         headers: new Headers({
             'Content-Type': 'application/json',
-            'Authorization': `${this.props.token}`,
+            'Authorization': this.props.token,
         })
         
     }) .then((res) => res.json())

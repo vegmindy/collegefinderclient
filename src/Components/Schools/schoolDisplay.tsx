@@ -51,6 +51,8 @@
 //     }),
 // );
 
+
+
 const SchoolDisplay = (props: any) => {
     console.log(props)
     return (

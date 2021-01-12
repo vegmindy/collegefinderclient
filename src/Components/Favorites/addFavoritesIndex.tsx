@@ -10,7 +10,7 @@ type FavoritesState = {
 
 interface Props {
     // updateToken: (newToken: string) => void
-    token: string | null
+    token: string
 }
 
 export default class AddFavoritesIndex extends Component<Props, FavoritesState>{
@@ -61,7 +61,7 @@ export default class AddFavoritesIndex extends Component<Props, FavoritesState>{
             headers: new Headers({
                 'Content-Type': 'application/json',
                 // 'Authorization': `${localStorage.getItem('token')}`
-                'Authorization': `${this.props.token}`,
+                'Authorization': this.props.token,
             })
         })
         // .then((response) => response.json())

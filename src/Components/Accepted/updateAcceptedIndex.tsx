@@ -16,7 +16,7 @@ interface Props {
     token: string
 }
 
-export default class AddAcceptedIndex extends Component<Props, AcceptedState>{
+export default class UpdateAcceptedIndex extends Component<Props, AcceptedState>{
     constructor(props: Props) {
         super(props)
         this.state = {
@@ -76,7 +76,7 @@ export default class AddAcceptedIndex extends Component<Props, AcceptedState>{
         console.log("addSchool didMount: ", this.props.token);
       }
 
-    addAccepted(e: any) {
+    updateAccepted(e: any) {
         e.preventDefault();
         fetch('http://localhost:3000/accepted/addschool', {
             method: 'POST',
@@ -104,7 +104,7 @@ export default class AddAcceptedIndex extends Component<Props, AcceptedState>{
     render() {
         return (
             <div>
-                <form onSubmit={(e)=>this.addAccepted(e)} >
+                <form onSubmit={(e)=>this.updateAccepted(e)} >
                     <TextField id="outlined-basic" label="School Name" variant="outlined" onChange={(e)=>this.setSchoolName(e.target.value)} />
                     <TextField id="outlined-basic" label="School Address" variant="outlined"
                     onChange={(e)=>this.setAddress(e.target.value)} />
@@ -113,7 +113,7 @@ export default class AddAcceptedIndex extends Component<Props, AcceptedState>{
                     <TextField id="outlined-basic" label="Pros" variant="outlined" onChange={(e)=>this.setPros(e.target.value)} />
                     <TextField id="outlined-basic" label="Cons" variant="outlined" onChange={(e)=>this.setCons(e.target.value)} />
                     <TextField id="outlined-basic" label="Notes" variant="outlined" onChange={(e)=>this.setNotes(e.target.value)} />
-                    <Button type='submit' variant="contained">Add school</Button>
+                    <Button type='submit' variant="contained">Update school</Button>
                 </form>
             </div>
         )

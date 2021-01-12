@@ -72,10 +72,10 @@ export default class AddAcceptedIndex extends Component<Props, AcceptedState>{
         })
     }
 
-    componentDidMount() {
-        console.log(localStorage.getItem('token'))
-        console.log(this.props.token);
-      }
+    // componentDidMount() {
+    //     console.log(localStorage.getItem('token'))
+    //     console.log(this.props.token);
+    //   }
 
     addAccepted(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -99,6 +99,7 @@ export default class AddAcceptedIndex extends Component<Props, AcceptedState>{
         .then((response) => response.json())
             .then((data) => {
                 console.log(data)
+                //this.props.fetchAccepted();
             })
     }
 

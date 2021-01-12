@@ -60,6 +60,8 @@ import Login from './Auth/login';
 import Accepted from './Accepted/addAccepted'
 import Favorites from './Favorites/addFavorites'
 import SchoolSearch from './Schools/schools'
+import AcceptedDisplay from './Accepted/acceptedDisplay'
+
 
 
 const useStyles = makeStyles(()=>
@@ -91,6 +93,8 @@ const Main = (props: Props) => {
                         <Route exact path='/accepted/addschool' render={()=>(<Accepted token={props.token} />)} />
                         <Route exact path='/favorites/addschool' render={()=>(<Favorites token={props.token} />)} />
                         <Route exact path='/schools/all' render={()=>(<SchoolSearch token={props.token}  /> )}/>
+                        <Route exact path='/accepted/myaccepted' render={()=>(<AcceptedDisplay token={props.token}/> )} />
+                        {/* <Route exact path='/accepted/updateschool/:id' render={()=>(<)} */}
                     </Switch>
                     </div>
                 </Router>

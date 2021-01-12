@@ -25,22 +25,34 @@ const NavbBar = (props: Props) => {
     const classes = useStyles();
 
     return (
-        <AppBar position='fixed'>
-            <Toolbar>
-                <Grid container spacing={3}>
-                    <Grid item xs>
-                        <Link to='home'>Home</Link>
-                    </Grid>
-                    <Grid item xs={6}></Grid>
-                    <Grid item xs className={classes.loginButton}>
-                        <Auth clearToken={props.clearToken} />
-                    </Grid>
-                    <Grid item xs>
-                        <Link to='/accepted/addschool'>Add Accepted</Link>
-                    </Grid>
-                </Grid>
-            </Toolbar>
-        </AppBar>
+        // <AppBar position='fixed'>
+        //     <Toolbar>
+        //         <Grid container spacing={3}>
+        //             <Grid item xs>
+        //                 <Link to='home'>Home</Link>
+        //             </Grid>
+        //             <Grid item xs={6}></Grid>
+        //             <Grid item xs className={classes.loginButton}>
+        //                 <Auth clearToken={props.clearToken} />
+        //             </Grid>
+        //             <Grid item xs>
+        //                 <Link to='/accepted/addschool'>Add Accepted</Link>
+        //             </Grid>
+        //             <Grid item xs>
+        //                 <Link to='/schools/all'>View all schools</Link>
+        //             </Grid>
+        //             <Grid item xs>
+        //                 <Link to='/accepted/myaccepted'>View all accepted</Link>
+        //             </Grid>
+        //         </Grid>
+        //     </Toolbar>
+        // </AppBar>
+        <div>
+            <Auth clearToken={props.clearToken} />
+            <Link to='/accepted/addschool'>Add Accepted</Link>
+            <Link to='/schools/all'>View all schools</Link>
+            <Link to='/accepted/myaccepted'>View all accepted</Link>
+        </div>
         // <p>nav bar goes here</p>
     )
 }
