@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
 import SchoolDisplay from './schoolDisplay';
 
-type FetchResults = {
+type FetchResultsState = {
     search: string,
     pageNumber: number,
     results: any,
-};
+}
 
 interface Props {
     token: string | null
 }
 
 
-const baseURL = 'http://localhost:3000/schools/all';
+// const baseURL = 'http://localhost:3000/schools/all';
 
 // console.log(results)
-console.log("hello1")
-export default class SchoolSearch extends Component<{}, FetchResults> {
-    
+// console.log("hello1")
+export default class SchoolSearch extends Component<Props, FetchResultsState>{
     constructor(props: Props) {
         super(props)
         this.state = {
@@ -35,16 +34,17 @@ export default class SchoolSearch extends Component<{}, FetchResults> {
     }
 
 
-    fetchResults = () => {
-
-    fetch(baseURL, {
-        method: 'POST',
+    // fetchResults = () => {
+    fetchResults(event: React.FormEvent<HTMLFormElement>){
+        event.preventDefault();
+    fetch('http://localhost:3000/schools/all', {
+        method: 'GET',
         headers: new Headers({
             'Content-Type': 'application/json',
             'Authorization': `${this.props.token}`,
         })
         
-    }) .then(res => res.json())
+    }) .then((res) => res.json())
     .then(data => {
         console.log(data)
         this.setState({
@@ -59,7 +59,7 @@ export default class SchoolSearch extends Component<{}, FetchResults> {
 
     handleSubmit(event: any) {
         event.preventDefault()
-        this.fetchResults()
+        this.fetchResults(event)
     }
 
     nextPage(event: any){
@@ -67,7 +67,7 @@ export default class SchoolSearch extends Component<{}, FetchResults> {
         this.setState({
             pageNumber: this.state.pageNumber+1
         })
-        this.fetchResults()
+        this.fetchResults(event)
     }
 
     previousPage(event: any){
@@ -76,7 +76,7 @@ export default class SchoolSearch extends Component<{}, FetchResults> {
         this.setState({
             pageNumber: this.state.pageNumber-1
         })
-        this.fetchResults()
+        this.fetchResults(event)
     }
     }
 

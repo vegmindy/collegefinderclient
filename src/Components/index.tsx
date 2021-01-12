@@ -73,7 +73,7 @@ const useStyles = makeStyles(()=>
 interface Props {
     updateToken:(newToken: string) =>void,
     clearToken:() => void,
-    token: string | null
+    token: string 
 }
 
 const Main = (props: Props) => {
@@ -83,14 +83,14 @@ const Main = (props: Props) => {
             <React.Fragment>
                 <Router>
                     <div className={classes.mainDiv}>
-                     <NavBar clearToken={props.clearToken} />
+                     <NavBar token={props.token} clearToken={props.clearToken} />
                     <Switch>
                         <Route exact path='/home' render={()=>(<Home />)} />
                         <Route exact path='/signup' render={()=>(<SignUp updateToken={props.updateToken} />)} />
                         <Route exact path='/login' render={()=>(<Login updateToken={props.updateToken} />)} />
                         <Route exact path='/accepted/addschool' render={()=>(<Accepted token={props.token} />)} />
                         <Route exact path='/favorites/addschool' render={()=>(<Favorites token={props.token} />)} />
-                        <Route exact path='/schools/all' render={()=>(<SchoolSearch token={props.token} /> )}/>
+                        <Route exact path='/schools/all' render={()=>(<SchoolSearch token={props.token}  /> )}/>
                     </Switch>
                     </div>
                 </Router>

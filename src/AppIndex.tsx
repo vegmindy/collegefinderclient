@@ -1,28 +1,52 @@
 import React, { Component } from 'react';
 import Main from './Components/index';
+import { BrowserRouter as Router } from 'react-router-dom'
+import Auth from './Components/Auth/Auth'
+import AddAccepted from './Components/Accepted/addAccepted';
+import AddAcceptedIndex from './Components/Accepted/addAcceptedIndex';
 
-type AppState = {
-    token: string | null
-    // schoolsUpdate: any
-}
+// type AppState = {
+//     token: string
+//     // schoolsUpdate: any
+// }
 
-export default class AppIndex extends Component<{}, AppState>{
-    constructor(props: AppState){
-        super(props)
-        this.state = {
-            token: localStorage.getItem('token') ? localStorage.getItem('token') : '' ,
-            // schoolsUpdate: []
-        }
+export default class AppIndex extends Component {
+    // constructor(){
+    //     super(props)
+    //     this.state = {
+    //         token: localStorage.getItem('token') ? localStorage.getItem('token') : '' ,
+    //         // schoolsUpdate: []
+    //     }
+    // }
+
+
+    state = {
+        token: ""
     }
 
-    updateToken = (newToken: string)=> {
+    componentWillMount() {
+        if (localStorage.getItem('token')) {
+            this.setState({
+                token: localStorage.getItem('token')
+            })
+        }
+        console.log(this.state.token)
+    }
+
+
+    componentDidMount() {
+        console.log(this.state.token)
+    }
+
+
+    updateToken = (newToken: string) => {
         localStorage.setItem('token', newToken)
         this.setState({
             token: newToken
         })
     }
 
-    clearToken = ()=> {
+    clearToken = () => {
         localStorage.clear();
         this.setState({
             token: ''

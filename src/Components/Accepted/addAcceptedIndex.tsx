@@ -13,7 +13,7 @@ type AcceptedState = {
 
 interface Props {
     // updateToken: (newToken: string) => void
-    token: string | null
+    token: string
 }
 
 export default class AddAcceptedIndex extends Component<Props, AcceptedState>{
@@ -73,6 +73,7 @@ export default class AddAcceptedIndex extends Component<Props, AcceptedState>{
     }
 
     componentDidMount() {
+        console.log(localStorage.getItem('token'))
         console.log(this.props.token);
       }
 
@@ -92,7 +93,7 @@ export default class AddAcceptedIndex extends Component<Props, AcceptedState>{
             headers: new Headers({
                 'Content-Type': 'application/json',
                 // 'Authorization': `${localStorage.getItem('token')}`
-                'Authorization': `${this.props.token}`,
+                'Authorization': this.props.token,
             })
         })
         .then((response) => response.json())

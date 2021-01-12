@@ -80,7 +80,7 @@ const useStyles = makeStyles(() =>
 
 interface Props {
     // updateToken: (newToken: string) => void
-    token: string | null
+    token: string
 }
 
 const AddAccepted = (props: Props) => {

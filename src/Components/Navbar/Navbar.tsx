@@ -4,6 +4,7 @@ import { AppBar, Toolbar } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import Auth from '../Auth/Auth';
 import { Link } from 'react-router-dom';
+import AddAccepted from '../Accepted/addAcceptedIndex'
 
 
 const useStyles = makeStyles(() =>
@@ -17,6 +18,7 @@ const useStyles = makeStyles(() =>
 
 interface Props {
     clearToken:() => void
+    token: string
 }
 
 const NavbBar = (props: Props) => {
@@ -32,6 +34,9 @@ const NavbBar = (props: Props) => {
                     <Grid item xs={6}></Grid>
                     <Grid item xs className={classes.loginButton}>
                         <Auth clearToken={props.clearToken} />
+                    </Grid>
+                    <Grid item xs>
+                        <Link to='/accepted/addschool'>Add Accepted</Link>
                     </Grid>
                 </Grid>
             </Toolbar>
