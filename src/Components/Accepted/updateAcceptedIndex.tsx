@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import { TextField, Button} from '@material-ui/core';
 
@@ -106,10 +107,9 @@ export default class UpdateAcceptedIndex extends Component<Props, AcceptedState>
             <div>
                 <form onSubmit={(e)=>this.updateAccepted(e)} >
                     <TextField id="outlined-basic" label="School Name" variant="outlined" onChange={(e)=>this.setSchoolName(e.target.value)} />
-                    <TextField id="outlined-basic" label="School Address" variant="outlined"
-                    onChange={(e)=>this.setAddress(e.target.value)} />
-                    <TextField id="outlined-basic" label="In state?(true or false)" variant="outlined" onChange={(e)=>this.setInState(e.target.value)} />
-                    <TextField id="outlined-basic" label="Accepted? (true or false)" variant="outlined" onChange={(e)=>this.setAccepted(e.target.value)} />
+                    <TextField id="outlined-basic" label="School Address" variant="outlined" onChange={(e)=>this.setAddress(e.target.value)} />
+                    <TextField id="outlined-basic" label="Is the school in state?" variant="outlined" onChange={(e)=>this.setInState(e.target.value)} />
+                    <TextField id="outlined-basic" label="Have you been accepted?" variant="outlined" onChange={(e)=>this.setAccepted(e.target.value)} />
                     <TextField id="outlined-basic" label="Pros" variant="outlined" onChange={(e)=>this.setPros(e.target.value)} />
                     <TextField id="outlined-basic" label="Cons" variant="outlined" onChange={(e)=>this.setCons(e.target.value)} />
                     <TextField id="outlined-basic" label="Notes" variant="outlined" onChange={(e)=>this.setNotes(e.target.value)} />

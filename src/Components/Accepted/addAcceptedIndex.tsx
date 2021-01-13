@@ -1,5 +1,19 @@
+
 import React, { Component } from 'react';
-import { TextField, Button} from '@material-ui/core';
+// import { TextField, Button} from '@material-ui/core';
+import {
+    Button,
+    FormGroup,
+    FormLabel,
+    FormControl,
+    InputLabel,
+    Box,
+    TextField,
+    Dialog,
+    DialogTitle,
+    DialogContent,
+   DialogActions,
+} from '@material-ui/core';
 
 type AcceptedState = {
     schoolName: string,
@@ -9,6 +23,7 @@ type AcceptedState = {
     pros: string,
     cons: string,
     notes: string,
+    handleopen: boolean;
 }
 
 interface Props {
@@ -16,7 +31,7 @@ interface Props {
     token: string
 }
 
-export default class AddAcceptedIndex extends Component<Props, AcceptedState>{
+export default class AddAcceptedIndex extends React.Component<Props, AcceptedState>{
     constructor(props: Props) {
         super(props)
         this.state = {
@@ -27,8 +42,56 @@ export default class AddAcceptedIndex extends Component<Props, AcceptedState>{
             pros: '',
             cons: '',
             notes: '',
+            handleopen: false,
         }
     }
+
+    // setSchoolName(e: string) {
+    //     this.setState({
+    //         schoolName: (e)
+    //     })
+    // }
+
+    // setAddress(e: string) {
+    //     this.setState({
+    //         address: (e)
+    //     })
+    // }
+
+    // setInState(e: string) {
+    //     this.setState({
+    //         inState: (e)
+    //     })
+    // }
+
+    // setAccepted(e: string) {
+    //     this.setState({
+    //         accepted: (e)
+    //     })
+    // }
+
+    // setPros(e: string) {
+    //     this.setState({
+    //         pros: (e)
+    //     })
+    // }
+
+    // setCons(e: string) {
+    //     this.setState({
+    //         cons: (e)
+    //     })
+    // }
+
+    // setNotes(e: string) {
+    //     this.setState({
+    //         notes: (e)
+    //     })
+    // }
+
+    // componentDidMount() {
+    //     console.log(localStorage.getItem('token'))
+    //     console.log(this.props.token);
+    //   }
 
     setSchoolName(e: string) {
         this.setState({
@@ -72,12 +135,7 @@ export default class AddAcceptedIndex extends Component<Props, AcceptedState>{
         })
     }
 
-    // componentDidMount() {
-    //     console.log(localStorage.getItem('token'))
-    //     console.log(this.props.token);
-    //   }
-
-    addAccepted(e: React.FormEvent<HTMLFormElement>) {
+    handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>{
         e.preventDefault();
         fetch('http://localhost:3000/accepted/addschool', {
             method: 'POST',
@@ -101,22 +159,97 @@ export default class AddAcceptedIndex extends Component<Props, AcceptedState>{
                 console.log(data)
                 //this.props.fetchAccepted();
             })
+            this.handleClose();
     }
+    handleOpen = () => {
+        this.setState({
+            handleopen: true,
+        });
+    };
+
+    handleClose = () => {
+        this.setState({
+            handleopen: false,
+        });
+    };
 
     render() {
         return (
-            <div>
-                <form onSubmit={(e)=>this.addAccepted(e)} >
-                    <TextField id="outlined-basic" label="School Name" variant="outlined" onChange={(e)=>this.setState({schoolName: (e.target.value)})} />
-                    <TextField id="outlined-basic" label="School Address" variant="outlined" onChange={(e)=>this.setState({address: (e.target.value)})} />
-                    <TextField id="outlined-basic" label="In state?(true or false)" variant="outlined" onChange={(e)=>this.setState({inState: (e.target.value)})} />
-                    <TextField id="outlined-basic" label="Accepted? (true or false)" variant="outlined" onChange={(e)=>this.setState({accepted: (e.target.value)})} />
-                    <TextField id="outlined-basic" label="Pros" variant="outlined" onChange={(e)=>this.setState({pros: (e.target.value)})} />
-                    <TextField id="outlined-basic" label="Cons" variant="outlined" onChange={(e)=>this.setState({cons: (e.target.value)})} />
-                    <TextField id="outlined-basic" label="Notes" variant="outlined" onChange={(e)=>this.setState({notes: (e.target.value)})} />
-                    <Button type='submit' variant="contained">Add school</Button>
-                </form>
-            </div>
+        <div className="container">
+        <Button onClick={this.handleOpen} id="CreateButton" variant="outlined" >Add A School</Button>
+        <Dialog
+            fullWidth
+            open={this.state.handleopen}
+            onClose={this.handleClose}
+            aria-labelledby="scroll-dialog-title"
+            aria-describedby="scroll-dialog-description">
+
+            <DialogTitle id="scroll-dialog-title">Add School</DialogTitle>
+            <DialogContent id="Create">
+            <TextField
+                    margin="dense"
+                    label="School Name"
+                    type="text"
+                    fullWidth
+                    value={this.state.schoolName}
+                    onChange={(event) => this.setState({schoolName: event.target.value})}
+                />
+                <TextField
+                    margin="dense"
+                    label="Address"
+                    type="text"
+                    fullWidth
+                    value={this.state.address}
+                    onChange={(event) => this.setState({address: event.target.value})}
+                />
+                <TextField
+                    margin="dense"
+                    label="Have you been accepted?"
+                    type="text"
+                    fullWidth
+                    value={this.state.accepted}
+                    onChange={(event) => this.setState({accepted: event.target.value})}
+                />
+                <TextField
+                    margin="dense"
+                    label="Pros?"
+                    type="text"
+                    fullWidth
+                    value={this.state.pros}
+                    onChange={(event) => this.setState({pros: event.target.value})}
+                />
+                <TextField
+                    margin="dense"
+                    label="cons?"
+                    type="text"
+                    fullWidth
+                    value={this.state.cons}
+                    onChange={(event) => this.setState({cons: event.target.value})}
+                />
+                <TextField
+                    margin="dense"
+                    label="Extra Notes:"
+                    type="text"
+                    fullWidth
+                    value={this.state.notes}
+                    onChange={(event) => this.setState({notes: event.target.value})}
+                />
+                <TextField
+                    margin="dense"
+                    label="Is it in state?"
+                    type="text"
+                    fullWidth
+                    value={this.state.inState}
+                    onChange={(event) => {this.setState({inState: event.target.value})}}
+                />
+                <Button onClick={this.handleSubmit} id="btn">Submit</Button>
+            </DialogContent>
+            <DialogActions id="Createbtn">
+                
+                {/* <Button onClick={this.handleSubmit} >Submit</Button> */}
+            </DialogActions>
+        </Dialog>
+    </div>
         )
     }
 }

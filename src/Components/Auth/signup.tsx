@@ -6,7 +6,7 @@ import SignUpIndex from './signupIndex';
 const useStyles = makeStyles(() =>
     createStyles({
         container: {
-            marginTop: '4em',
+            marginTop: '12em',
             display: 'flex',
             justifyContent: 'center',
             alignContent: 'center',

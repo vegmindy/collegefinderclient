@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
 import AddAccepted from './addAccepted'
-// import Button from '@material-ui/core/Button';
-// import Card from "@material-ui/core/Card";
-// import CardContent from "@material-ui/core/CardContent";
-// import CardMedia from "@material-ui/core/CardMedia";
 import { Button, Card, CardContent } from '@material-ui/core';
-
+import './acceptedDisplay.css'
 
 
 type AcceptedState = {
@@ -19,7 +15,7 @@ type AcceptedState = {
         notes: string,
         inState: string,
     }>
-    // handleOpen: boolean
+
 }
 
 interface Props {
@@ -28,12 +24,12 @@ interface Props {
 
 console.log('oh hi mark')
 
+
 export default class AcceptedDisplay extends Component<Props, AcceptedState>{
     constructor(props: Props) {
         super(props)
         this.state = {
             accepted: []
-            // handleOpen: false
         }
     }
 
@@ -47,7 +43,6 @@ export default class AcceptedDisplay extends Component<Props, AcceptedState>{
         fetch('http://localhost:3000/accepted/myaccepted', {
             method: 'GET',
             headers: new Headers({
-                // 'Content-Type': 'application/json',
                 'Authorization': this.props.token,
             })
         }).then((res) => res.json())
@@ -57,10 +52,7 @@ export default class AcceptedDisplay extends Component<Props, AcceptedState>{
                 })
                 console.log("potato")
                 console.log(data)
-                // console.log(this.state)
-                // this.setState({
-                //     results: data
-                // })
+
             }).catch((error) =>
                 console.log(error)
             )
@@ -75,21 +67,21 @@ export default class AcceptedDisplay extends Component<Props, AcceptedState>{
     //         handleOpen: true
     //     })
     // }
-
-
+    
     render() {
         return (
             <div>
                 {this.state.accepted.map(accepted => {
                     return(
-                        <Card key={accepted.id}>
-                        <CardContent>{accepted.schoolName}</CardContent>
-                        <CardContent>{accepted.address}</CardContent>
-                        <CardContent>{accepted.accepted}</CardContent>
-                        <CardContent>{accepted.pros}</CardContent>
-                        <CardContent>{accepted.cons}</CardContent>
-                        <CardContent>{accepted.notes}</CardContent>
-                        <CardContent>{accepted.inState}</CardContent>
+                        <Card id="overallCard" key={accepted.id}>
+                            <CardContent>School Name: </CardContent>
+                        <CardContent id="schoolName">{accepted.schoolName}</CardContent>
+                        <CardContent>Address: {accepted.address}</CardContent>
+                        <CardContent>Have I been accepted:  {accepted.accepted}</CardContent>
+                        <CardContent>Pros:  {accepted.pros}</CardContent>
+                        <CardContent>Cons:  {accepted.cons}</CardContent>
+                        <CardContent>Notes:  {accepted.notes}</CardContent>
+                        <CardContent>Is the school in state?  {accepted.inState}</CardContent>
                         {/* <Button onClick={() => {this.fetchAccepted()}}>Fetch</Button> */}
                     </Card>
                     )

@@ -61,6 +61,7 @@ import AddAcceptedIndex from './Accepted/addAccepted'
 import Favorites from './Favorites/addFavorites'
 import SchoolSearch from './Schools/schools'
 import AcceptedDisplay from './Accepted/acceptedDisplay'
+import FavoritesDisplay from './Favorites/favoritesDisplay'
 
 
 
@@ -94,7 +95,9 @@ const Main = (props: Props) => {
                         <Route exact path='/favorites/addschool' render={()=>(<Favorites token={props.token} />)} />
                         <Route exact path='/schools/all' render={()=>(<SchoolSearch token={props.token}  /> )}/>
                         <Route exact path='/accepted/myaccepted' render={()=>(<AcceptedDisplay token={props.token}/> )} />
-                        {/* <Route exact path='/accepted/updateschool/:id' render={()=>(<)} */}
+                        <Route exact path='/favorites/myfavorites' render={()=>(<FavoritesDisplay token={props.token}/> )} />
+                        {/* <Route exact path='/accepted/myaccepted' render={()=>(<AcceptedDisplay token={props.token}/> )} /> */}
+
                     </Switch>
                     </div>
                 </Router>

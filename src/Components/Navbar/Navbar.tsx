@@ -7,14 +7,14 @@ import { Link } from 'react-router-dom';
 // import AddAccepted from '../Accepted/addAcceptedIndex'
 
 
-const useStyles = makeStyles(() =>
-    createStyles({
-        loginButton: {
-            display: 'flex',
-            justifyContent: 'flex-end'
-        }
-    }),
-);
+// const useStyles = makeStyles(() =>
+//     createStyles({
+//         loginButton: {
+//             display: 'flex',
+//             justifyContent: 'flex-end'
+//         }
+//     }),
+// );
 
 interface Props {
     clearToken:() => void
@@ -22,37 +22,43 @@ interface Props {
 }
 
 const NavbBar = (props: Props) => {
-    const classes = useStyles();
+    // const classes = useStyles();
 
     return (
-        // <AppBar position='fixed'>
-        //     <Toolbar>
-        //         <Grid container spacing={3}>
-        //             <Grid item xs>
-        //                 <Link to='home'>Home</Link>
-        //             </Grid>
-        //             <Grid item xs={6}></Grid>
-        //             <Grid item xs className={classes.loginButton}>
-        //                 <Auth clearToken={props.clearToken} />
-        //             </Grid>
-        //             <Grid item xs>
-        //                 <Link to='/accepted/addschool'>Add Accepted</Link>
-        //             </Grid>
-        //             <Grid item xs>
-        //                 <Link to='/schools/all'>View all schools</Link>
-        //             </Grid>
-        //             <Grid item xs>
-        //                 <Link to='/accepted/myaccepted'>View all accepted</Link>
-        //             </Grid>
-        //         </Grid>
-        //     </Toolbar>
-        // </AppBar>
-        <div>
-            <Auth clearToken={props.clearToken} />
-            <Link to='/accepted/addschool'>Add Accepted</Link>
-            <Link to='/schools/all'>View all schools</Link>
-            <Link to='/accepted/myaccepted'>View all accepted</Link>
-        </div>
+        <AppBar position='fixed'>
+            <Toolbar>
+                <Grid container spacing={3}>
+                    {/* <Grid item xs>
+                        <Link to='home'>Home</Link>
+                    </Grid> */}
+                    <Grid item xs={6}></Grid>
+                    <Grid item xs >
+                        <Auth clearToken={props.clearToken} />
+                    </Grid>
+                    <Grid item xs>
+                        <Link to='/accepted/addschool'>Add Accepted</Link>
+                    </Grid>
+                    <Grid item xs>
+                        <Link to='/schools/all'>View all schools</Link>
+                    </Grid>
+                    <Grid item xs>
+                        <Link to='/accepted/myaccepted'>View all accepted</Link>
+                    </Grid>
+                    <Grid item xs>
+                        <Link to='/favorites/addschool'>Add Favorites</Link>
+                    </Grid>
+                    <Grid item xs>
+                        <Link to='/favorites/myfavorites'>View all favorites</Link>
+                    </Grid>
+                </Grid>
+            </Toolbar>
+        </AppBar>
+        // <div>
+        //     <Auth clearToken={props.clearToken} />
+        //     <Link to='/accepted/addschool'>Add Accepted</Link>
+        //     <Link to='/schools/all'>View all schools</Link>
+        //     <Link to='/accepted/myaccepted'>View all accepted</Link>
+        // </div>
         // <p>nav bar goes here</p>
     )
 }

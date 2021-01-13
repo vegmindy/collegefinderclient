@@ -60,7 +60,7 @@ export default class LoginIndex extends Component<Props, LoginState>{
             <div>
                 <form onSubmit={(e)=>this.loginUser(e)} >
                     <TextField id="outlined-basic" label="email" variant="outlined" onChange={(e)=>this.setState({email: (e.target.value)})} />
-                    <TextField id="outlined-basic" label="Password" variant="outlined" onChange={(e)=>this.setState({password: (e.target.value)})} />
+                    <TextField label="Password" type="password" onChange={(e)=>this.setState({password: (e.target.value)})} />
                     <Button type='submit' variant='contained'>LOG IN</Button>
                 </form>
             </div>

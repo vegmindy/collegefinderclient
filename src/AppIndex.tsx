@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import Main from './Components/index';
-import { BrowserRouter as Router } from 'react-router-dom'
-import Auth from './Components/Auth/Auth'
-import AddAccepted from './Components/Accepted/addAccepted';
-// import AddAcceptedIndex from './Components/Accepted/addAcceptedIndex';
+
 
 // type AppState = {
 //     token: string

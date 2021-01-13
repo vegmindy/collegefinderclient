@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TextField, Button} from '@material-ui/core';
+import { TextField, Button, MenuItem, FormControl, InputLabel, Select, FormHelperText } from '@material-ui/core';
 
 type SignUpState = {
     firstName: string,
@@ -94,13 +94,12 @@ export default class SignUpIndex extends Component<Props, SignUpState>{
     render() {
         return (
             <div>
-                <form onSubmit={(e)=>this.signUpUser(e)} >
-                    <TextField id="outlined-basic" label="First Name" variant="outlined" onChange={(e)=>this.setState({firstName: (e.target.value)})} />
-                    <TextField id="outlined-basic" label="Last Name" variant="outlined"
-                    onChange={(e)=>this.setLastName(e.target.value)} />
-                    <TextField id="outlined-basic" label="Email" variant="outlined" onChange={(e)=>this.setState({email: (e.target.value)})} />
-                    <TextField id="outlined-basic" label="Password" variant="outlined" onChange={(e)=>this.setState({password: (e.target.value)})} />
-                    <TextField id="outlined-basic" label="Home State" variant="outlined" onChange={(e)=>this.setState({currentState: (e.target.value)})} />
+                <form onSubmit={(e) => this.signUpUser(e)} >
+                    <TextField id="outlined-basic" label="First Name" variant="outlined" onChange={(e) => this.setState({ firstName: (e.target.value) })} />
+                    <TextField id="outlined-basic" label="Last Name" variant="outlined" onChange={(e) => this.setLastName(e.target.value)} />
+                    <TextField id="outlined-basic" label="Email" variant="outlined" onChange={(e) => this.setState({ email: (e.target.value) })} />
+                    <TextField id="outlined-basic" type="password" label="Password" variant="outlined" onChange={(e) => this.setState({ password: (e.target.value) })} />
+                    <TextField id="outlined-basic" label="Home State" variant="outlined" onChange={(e) => this.setState({ currentState: (e.target.value) })} />
                     <TextField id="outlined-basic" label="Role" variant="outlined" onChange={(e)=>this.setState({role: (e.target.value)})} />
                     <Button type='submit' variant="contained">Create Account</Button>
                 </form>

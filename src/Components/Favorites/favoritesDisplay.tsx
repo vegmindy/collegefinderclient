@@ -12,7 +12,7 @@ type FavoritesState = {
         inState: string,
         notes: string
     }>
-    // handleOpen: boolean
+
 }
 
 interface Props {
@@ -26,21 +26,20 @@ export default class FavoritesDisplay extends Component<Props, FavoritesState>{
         super(props)
         this.state = {
             favorites: []
-            // handleOpen: false
         }
     }
 
     componentDidMount() {
-        console.log('hi im here in the componenetDidMount')
+        // console.log('hi im here in the componenetDidMount')
         this.fetchFavorites();
     }
 
     fetchFavorites() {
-        console.log("orange")
+        // console.log("orange")
         fetch('http://localhost:3000/favorites/myfavorites', {
             method: 'GET',
             headers: new Headers({
-                // 'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
                 'Authorization': this.props.token,
             })
         }).then((res) => res.json())
@@ -48,12 +47,9 @@ export default class FavoritesDisplay extends Component<Props, FavoritesState>{
                 this.setState({
                     favorites: data
                 })
-                console.log("potato")
+                // console.log("potato")
                 console.log(data)
-                // console.log(this.state)
-                // this.setState({
-                //     results: data
-                // })
+
             }).catch((error) =>
                 console.log(error)
             )
@@ -76,13 +72,12 @@ export default class FavoritesDisplay extends Component<Props, FavoritesState>{
                 {this.state.favorites.map(favorites => {
                     return (
                         <Card key={favorites.id}>
-                            <CardContent>{favorites.schoolName}</CardContent>
-                            <CardContent>{favorites.address}</CardContent>
-                            <CardContent>{favorites.inState}</CardContent>
-                            <CardContent>{favorites.notes}</CardContent>
+                            <CardContent>School Name: {favorites.schoolName}</CardContent>
+                            <CardContent>Address: {favorites.address}</CardContent>
+                            <CardContent>Is it in state?{favorites.inState}</CardContent>
+                            <CardContent>Notes?{favorites.notes}</CardContent>
                             {/* <Button onClick={ this.handleOpen }></Button> */}
-                            <Button onClick={() => { this.fetchFavorites() }}></Button>
-
+                            {/* <Button onClick={() => { this.fetchFavorites() }}></Button> */}
                         </Card>
                     )
                 })};
