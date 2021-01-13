@@ -4,7 +4,7 @@ import { AppBar, Toolbar } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import Auth from '../Auth/Auth';
 import { Link } from 'react-router-dom';
-import AddAccepted from '../Accepted/addAcceptedIndex'
+// import AddAccepted from '../Accepted/addAcceptedIndex'
 
 
 const useStyles = makeStyles(() =>

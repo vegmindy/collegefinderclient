@@ -13,7 +13,7 @@ interface Props {
     token: string
 }
 
-export default class AddFavoritesIndex extends Component<Props, FavoritesState>{
+export default class UpdateFavoritesIndex extends Component<Props, FavoritesState>{
     constructor(props: Props) {
         super(props)
         this.state = {
@@ -48,9 +48,13 @@ export default class AddFavoritesIndex extends Component<Props, FavoritesState>{
         })
     }
 
-    addFavorites(e: React.FormEvent<HTMLFormElement>) {
+    componentDidMount() {
+        console.log("addSchool didMount: ", this.props.token);
+      }
+
+    updateAccepted(e: any) {
         e.preventDefault();
-        fetch('http://localhost:3000/favorites/addschool', {
+        fetch('http://localhost:3000/accepted/addschool', {
             method: 'POST',
             body: JSON.stringify({
                 schoolName: this.state.schoolName,
@@ -64,11 +68,6 @@ export default class AddFavoritesIndex extends Component<Props, FavoritesState>{
                 'Authorization': this.props.token,
             })
         })
-        // .then((response) => response.json())
-        //     .then((data) => {
-        //         this.props.updateToken(data.token)
-        //         // setSubmitSuccess
-        //     })
         .then((response) => response.json())
             .then((data) => {
                 console.log(data)
@@ -78,12 +77,12 @@ export default class AddFavoritesIndex extends Component<Props, FavoritesState>{
     render() {
         return (
             <div>
-                <form onSubmit={(e)=>this.addFavorites(e)} >
-                    <TextField id="outlined-basic" label="School Name" variant="outlined" onChange={(e)=>this.setState({schoolName: (e.target.value)})} />
-                    <TextField id="outlined-basic" label="School Address" variant="outlined" onChange={(e)=>this.setState({address: (e.target.value)})} />
-                    <TextField id="outlined-basic" label="In state?(true or false)" variant="outlined" onChange={(e)=>this.setState({inState: (e.target.value)})} />
-                    <TextField id="outlined-basic" label="Notes" variant="outlined" onChange={(e)=>this.setState({notes: (e.target.value)})} />
-                    <Button type='submit' variant="contained">Add school</Button>
+                <form onSubmit={(e)=>this.updateAccepted(e)} >
+                    <TextField id="outlined-basic" label="School Name" variant="outlined" onChange={(e)=>this.setSchoolName(e.target.value)} />
+                    <TextField id="outlined-basic" label="School Address" variant="outlined" onChange={(e)=>this.setAddress(e.target.value)} />
+                    <TextField id="outlined-basic" label="In state?(true or false)" variant="outlined" onChange={(e)=>this.setInState(e.target.value)} />
+                    <TextField id="outlined-basic" label="Notes" variant="outlined" onChange={(e)=>this.setNotes(e.target.value)} />
+                    <Button type='submit' variant="contained">Update school</Button>
                 </form>
             </div>
         )
