@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import AddFavorites from './addFavorites'
 import { Button, Card, CardContent } from '@material-ui/core';
+import './favoritesDisplay.css'
 
 
 
@@ -71,8 +72,8 @@ export default class FavoritesDisplay extends Component<Props, FavoritesState>{
             <div>
                 {this.state.favorites.map(favorites => {
                     return (
-                        <Card key={favorites.id}>
-                            <CardContent>School Name: {favorites.schoolName}</CardContent>
+                        <Card id="overallCard" key={favorites.id}>
+                            <CardContent id="schoolName">School Name: {favorites.schoolName}</CardContent>
                             <CardContent>Address: {favorites.address}</CardContent>
                             <CardContent>Is it in state?{favorites.inState}</CardContent>
                             <CardContent>Notes?{favorites.notes}</CardContent>
