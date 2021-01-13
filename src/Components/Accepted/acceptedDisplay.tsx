@@ -84,7 +84,7 @@ export default class AcceptedDisplay extends Component<Props, AcceptedState>{
                         <CardContent>Notes:  {accepted.notes}</CardContent>
                         <CardContent>Is the school in state?  {accepted.inState}</CardContent>
                         {/* <Button onClick={() => {this.fetchAccepted()}}>Fetch</Button> */}
-                        <Button>Update</Button>
+                        <Button >Update</Button>
                         <Button>Delete</Button>
                     </Card>
                     )
