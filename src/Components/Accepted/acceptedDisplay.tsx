@@ -90,9 +90,7 @@ export default class AcceptedDisplay extends Component<Props, AcceptedState>{
                         <CardContent>{accepted.cons}</CardContent>
                         <CardContent>{accepted.notes}</CardContent>
                         <CardContent>{accepted.inState}</CardContent>
-                        {/* <Button onClick={ this.handleOpen }></Button> */}
-                        <Button onClick={() => {this.fetchAccepted()}}></Button>
-
+                        {/* <Button onClick={() => {this.fetchAccepted()}}>Fetch</Button> */}
                     </Card>
                     )
                 })};
