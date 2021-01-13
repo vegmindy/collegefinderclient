@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { TextField, Button, MenuItem, FormControl, InputLabel, Select, FormHelperText } from '@material-ui/core';
+import APIURL from '../../helpers/environment';
+
 
 type SignUpState = {
     firstName: string,
@@ -72,7 +74,7 @@ export default class SignUpIndex extends Component<Props, SignUpState>{
 
     signUpUser(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        fetch('http://localhost:3000/user/signup', {
+        fetch(`${APIURL}/user/signup`, {
             method: 'POST',
             body: JSON.stringify({
                 firstName: this.state.firstName,

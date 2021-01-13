@@ -1,6 +1,8 @@
 
 import React, { Component } from 'react';
 import { TextField, Button} from '@material-ui/core';
+import APIURL from '../../helpers/environment';
+
 
 type AcceptedState = {
     schoolName: string,
@@ -79,7 +81,7 @@ export default class UpdateAcceptedIndex extends Component<Props, AcceptedState>
 
     updateAccepted(e: any) {
         e.preventDefault();
-        fetch('http://localhost:3000/accepted/addschool', {
+        fetch(`${APIURL}/accepted/addschool`, {
             method: 'POST',
             body: JSON.stringify({
                 schoolName: this.state.schoolName,

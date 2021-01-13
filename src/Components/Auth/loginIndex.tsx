@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { TextField, Button } from '@material-ui/core';
+import APIURL from '../../helpers/environment';
 
 type LoginState = {
     email: string,
@@ -33,7 +34,7 @@ export default class LoginIndex extends Component<Props, LoginState>{
 
     loginUser(e: React.FormEvent<HTMLFormElement>){
         e.preventDefault();
-        fetch('http://localhost:3000/user/login',{
+        fetch(`${APIURL}/user/login`,{
             method: 'POST',
             body: JSON.stringify({
                 email: this.state.email,

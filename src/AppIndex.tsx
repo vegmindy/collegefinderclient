@@ -8,14 +8,6 @@ import Main from './Components/index';
 // }
 
 export default class AppIndex extends Component {
-    // constructor(){
-    //     super(props)
-    //     this.state = {
-    //         token: localStorage.getItem('token') ? localStorage.getItem('token') : '' ,
-    //         // schoolsUpdate: []
-    //     }
-    // }
-
 
     state = {
         token: ""
@@ -27,13 +19,13 @@ export default class AppIndex extends Component {
                 token: localStorage.getItem('token')
             })
         }
-        console.log(this.state.token)
+        // console.log(this.state.token)
     }
 
 
-    componentDidMount() {
-        console.log(this.state.token)
-    }
+    // componentDidMount() {
+    //     console.log(this.state.token)
+    // }
 
 
     updateToken = (newToken: string) => {

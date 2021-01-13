@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react';
+import APIURL from '../../helpers/environment';
 // import { TextField, Button} from '@material-ui/core';
 import {
     Button,
@@ -137,7 +138,7 @@ export default class AddAcceptedIndex extends React.Component<Props, AcceptedSta
 
     handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>{
         e.preventDefault();
-        fetch('http://localhost:3000/accepted/addschool', {
+        fetch(`${APIURL}/accepted/addschool`, {
             method: 'POST',
             body: JSON.stringify({
                 schoolName: this.state.schoolName,

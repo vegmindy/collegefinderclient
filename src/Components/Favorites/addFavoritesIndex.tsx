@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { TextField, Button} from '@material-ui/core';
+import APIURL from '../../helpers/environment';
 
 type FavoritesState = {
     schoolName: string,
@@ -50,7 +51,7 @@ export default class AddFavoritesIndex extends Component<Props, FavoritesState>{
 
     addFavorites(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        fetch('http://localhost:3000/favorites/addschool', {
+        fetch(`${APIURL}/favorites/addschool`, {
             method: 'POST',
             body: JSON.stringify({
                 schoolName: this.state.schoolName,
@@ -60,15 +61,9 @@ export default class AddFavoritesIndex extends Component<Props, FavoritesState>{
             }),
             headers: new Headers({
                 'Content-Type': 'application/json',
-                // 'Authorization': `${localStorage.getItem('token')}`
                 'Authorization': this.props.token,
             })
         })
-        // .then((response) => response.json())
-        //     .then((data) => {
-        //         this.props.updateToken(data.token)
-        //         // setSubmitSuccess
-        //     })
         .then((response) => response.json())
             .then((data) => {
                 console.log(data)

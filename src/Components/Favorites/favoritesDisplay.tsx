@@ -78,6 +78,8 @@ export default class FavoritesDisplay extends Component<Props, FavoritesState>{
                             <CardContent>Notes?{favorites.notes}</CardContent>
                             {/* <Button onClick={ this.handleOpen }></Button> */}
                             {/* <Button onClick={() => { this.fetchFavorites() }}></Button> */}
+                            <Button>Update</Button>
+                            <Button>Delete</Button>
                         </Card>
                     )
                 })};

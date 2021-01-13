@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { createStyles, makeStyles } from '@material-ui/core/styles'
 import SchoolDisplay from './schoolDisplay';
-
+import APIURL from '../../helpers/environment';
 
 type FetchResultsState = {
     search: string,
@@ -14,10 +14,6 @@ interface Props {
 }
 
 
-// const baseURL = 'http://localhost:3000/schools/all';
-
-// console.log(results)
-// console.log("hello1")
 export default class SchoolSearch extends Component<Props, FetchResultsState>{
     constructor(props: Props) {
         super(props)
@@ -39,7 +35,7 @@ export default class SchoolSearch extends Component<Props, FetchResultsState>{
     // fetchResults = () => {
     fetchResults(event: React.FormEvent<HTMLFormElement>){
         event.preventDefault();
-    fetch('http://localhost:3000/schools/all', {
+    fetch(`${APIURL}/schools/all`, {
         method: 'GET',
         headers: new Headers({
             'Content-Type': 'application/json',

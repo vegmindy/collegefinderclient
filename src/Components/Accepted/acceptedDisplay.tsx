@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import APIURL from '../../helpers/environment';
 import AddAccepted from './addAccepted'
 import { Button, Card, CardContent } from '@material-ui/core';
 import './acceptedDisplay.css'
@@ -40,7 +41,7 @@ export default class AcceptedDisplay extends Component<Props, AcceptedState>{
 
     fetchAccepted() {
         console.log("orange")
-        fetch('http://localhost:3000/accepted/myaccepted', {
+        fetch(`${APIURL}/accepted/myaccepted`, {
             method: 'GET',
             headers: new Headers({
                 'Authorization': this.props.token,
@@ -83,6 +84,8 @@ export default class AcceptedDisplay extends Component<Props, AcceptedState>{
                         <CardContent>Notes:  {accepted.notes}</CardContent>
                         <CardContent>Is the school in state?  {accepted.inState}</CardContent>
                         {/* <Button onClick={() => {this.fetchAccepted()}}>Fetch</Button> */}
+                        <Button>Update</Button>
+                        <Button>Delete</Button>
                     </Card>
                     )
                 })};
