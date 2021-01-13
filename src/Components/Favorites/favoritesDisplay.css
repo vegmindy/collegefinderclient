@@ -1,0 +1,18 @@
+#overallCard {
+    margin-top: 12em;
+    font-size: 15px;
+    border: 2px solid black;
+    margin-left: auto;
+    background-color: rgba(79, 119, 194, 0.185);
+    /* padding: 60px 20px; */
+    /* display: flex;
+    justify-content: center;
+    align-items: center */
+}
+
+
+#schoolName {
+    font-size: 1.5em;
+    font-weight: bold;
+    /* margin-left: 6em; */
+}
