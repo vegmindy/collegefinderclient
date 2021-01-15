@@ -11,6 +11,7 @@ type FetchResultsState = {
 
 interface Props {
     token: string
+    // results: 
 }
 
 
@@ -82,6 +83,10 @@ export default class SchoolSearch extends Component<Props, FetchResultsState>{
         return (
         <div className="main">
         <div className="mainDiv">
+                <br/>
+                <br/>
+                <br/>
+                <br/>
             <form onSubmit={(e) => this.handleSubmit(e)}>
                 <label>Search: </label>
                 <input type ="text" name ="search" onChange ={(e) => this.setState({search: e.target.value})} />
@@ -97,5 +102,3 @@ export default class SchoolSearch extends Component<Props, FetchResultsState>{
         );
     }
 }
-
-// export default SchoolSearch;

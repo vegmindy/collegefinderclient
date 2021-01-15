@@ -1,107 +1,371 @@
+// // // // import React from 'react';
+// // // // import './App.css';
+
+// // // // import Home from './Components/Home';
+// // // // import Auth from './Components/Auth/Auth';
+
+// // // // // type Props = {
+// // // // //     token: string | null
+// // // // // }
+
+// // // // // export default class App extends React.Component<{}, Props> {
+// // // // //     constructor(props: any) {
+// // // // //         super(props);
+// // // // //         this.state = {
+// // // // //             token: ''
+// // // // //         }
+// // // // //     }
+
+// // // // //     componentDidMount() {
+// // // // //         if (localStorage.getItem('token')) {
+// // // // //             this.setState({
+// // // // //                 token: localStorage.getItem('token')
+// // // // //             })
+// // // // //         }
+// // // // //     }
+
+// // // // //     updateToken = (newToken: string) => {
+// // // // //         localStorage.setItem('token', newToken);
+// // // // //         this.setState({
+// // // // //             token: newToken
+// // // // //         });
+// // // // //     }
+
+// // // // //     logout = () => {
+// // // // //         localStorage.clear();
+// // // // //         this.setState({
+// // // // //             token: ''
+// // // // //         })
+// // // // //     }
+
+// // // // //     viewConductor = () => {
+// // // // //         return !this.state.token ? (
+// // // // //             <div>
+// // // // //                 <Auth updateToken={this.updateToken.bind(this)} />
+// // // // //             </div>
+// // // // //         ) : (
+// // // // //                 <Home clickLogout={this.logout.bind(this)} token={this.state.token} />
+// // // // //             );
+// // // // //     };
+
+
+// // // // //     render() {
+// // // // //         return (
+// // // // //             <div>
+// // // // //                 {this.viewConductor()}
+// // // // //                 {/* <Auth updateToken={this.updateToken.bind(this)} /> */}
+// // // // //             </div>
+// // // // //         );
+// // // // //     }
+// // // // // }
+
+
+// // // // type Props = {
+// // // //   token: string | null
+// // // // }
+
+// // // // export default class App extends React.Component<{}, Props> {
+// // // //   constructor(props: Props) {
+// // // //       super(props);
+// // // //       this.state = {
+// // // //           token: ''
+// // // //       }
+// // // //   }
+
+// // // //   componentDidMount() {
+// // // //       if (localStorage.getItem('token')) {
+// // // //           this.setState({
+// // // //               token: localStorage.getItem('token')
+// // // //           })
+// // // //       }
+// // // //   }
+
+// // // //   updateToken = (newToken: string) => {
+// // // //       localStorage.setItem('token', newToken);
+// // // //       this.setState({
+// // // //           token: newToken
+// // // //       });
+// // // //   }
+
+// // // //   logout = () => {
+// // // //       localStorage.clear();
+// // // //       this.setState({
+// // // //           token: ''
+// // // //       })
+// // // //   }
+
+// // // //   viewConductor = () => {
+// // // //       return !this.state.token ? (
+// // // //           <div>
+// // // //               <Auth updateToken={this.updateToken.bind(this)} />
+// // // //           </div>
+// // // //       ) : (
+// // // //               <Home clickLogout={this.logout.bind(this)} token={this.state.token} />)
+// // // //   };
+
+
+// // // //   render() {
+// // // //       return (
+// // // //           <div>
+// // // //               {this.viewConductor()}
+// // // //           </div>
+// // // //       );
+// // // //   }
+// // // // }
+
+
+// // // // import React from 'react';
+// // // // import AppIndex from './AppIndex';
+
+// // // // function App() {
+// // // //   return (
+// // // //     <React.Fragment>
+// // // //       <AppIndex />
+// // // //     </React.Fragment>
+// // // //   );
+// // // // }
+
+// // // // export default App;
+
+
+// // // import React from 'react';
+// // // import './App.css';
+
+// // // import Home from './Components/Home';
+// // // import Auth from './Components/Auth/Auth';
+
+// // // type Props = {
+// // //     token: string | null
+// // // }
+
+// // // export default class App extends React.Component<{}, Props> {
+// // //     constructor(props: Props) {
+// // //         super(props);
+// // //         this.state = {
+// // //             token: ''
+// // //         }
+// // //     }
+
+// // //     componentDidMount() {
+// // //         if (localStorage.getItem('token')) {
+// // //             this.setState({
+// // //                 token: localStorage.getItem('token')
+// // //             })
+// // //         }
+// // //     }
+
+// // //     updateToken = (newToken: string) => {
+// // //         localStorage.setItem('token', newToken);
+// // //         this.setState({
+// // //             token: newToken
+// // //         });
+// // //     }
+
+// // //     logout = () => {
+// // //         localStorage.clear();
+// // //         this.setState({
+// // //             token: ''
+// // //         })
+// // //     }
+
+// // //     clearToken = () => {
+// // //       localStorage.clear();
+// // //       this.setState({
+// // //         token: "",
+// // //       });
+// // //     }
+
+// // //     viewConductor = () => {
+// // //         return !this.state.token ? (
+// // //             <div>
+// // //                 <Auth updateToken={this.updateToken.bind(this)} clearToken={this.clearToken} />
+// // //             </div>
+// // //         ) : (
+// // //                 <Home clickLogout={this.logout.bind(this)} token={this.state.token} />)
+// // //     };
+
+
+// // //     render() {
+// // //         return (
+// // //             <div>
+// // //                 {this.viewConductor()}
+// // //             </div>
+// // //         );
+// // //     }
+// // // }
+
+
+// // import React, { Component } from 'react';
+// // import Main from './Components/index';
+
+
+// // // type AppState = {
+// // //     token: string
+// // //     // schoolsUpdate: any
+// // // }
+
+// // export default class AppIndex extends Component {
+
+// //     state = {
+// //         token: ""
+// //     }
+
+// //     componentWillMount() {
+// //         if (localStorage.getItem('token')) {
+// //             this.setState({
+// //                 token: localStorage.getItem('token')
+// //             })
+// //         }
+// //         // console.log(this.state.token)
+// //     }
+
+
+// //     // componentDidMount() {
+// //     //     console.log(this.state.token)
+// //     // }
+
+
+// //     updateToken = (newToken: string) => {
+// //         localStorage.setItem('token', newToken)
+// //         this.setState({
+// //             token: newToken
+// //         })
+// //     }
+
+// //     clearToken = () => {
+// //         localStorage.clear();
+// //         this.setState({
+// //             token: ''
+// //         })
+// //     }
+
+// //     render() {
+// //         return (
+// //             <div className='app'>
+// //                 <Main updateToken={this.updateToken} token={this.state.token} clearToken={this.clearToken} />
+// //             </div>
+// //         )
+// //     }
+// // }
+
 // import React from 'react';
-// import {Auth} from "./Components/index"
-// import { Route, BrowserRouter as Router } from "react-router-dom"
-// import Navbar from './Components/Navbar/Navbar'
-
-// const App = () => {
-
-//   return (
-//     <div className="App">
-//       <Navbar />
-//           <Router>
-//             <Route path="/login" component={Auth} />
-//             {/* <Route path="/logout" component={Auth} /> */}
-//           </Router>
-//           <p>Hello</p>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-
-// import React from 'react';
-// import AppIndex from './AppIndex';
-
-// function App() {
-//   return (
-//     <React.Fragment>
-//       <AppIndex />
-//     </React.Fragment>
-//   );
-// }
-
-// export default App;
-
-
-// import React, {Component} from 'react';
 // import './App.css';
-// // import Signup from "./components/auth/signup"
-// import Auth from "./Components/Auth/Auth";
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route,
-//   Link
-// } from "react-router-dom";
 
-// interface AppState {
-//   token: string
+// import Home from './Components/Home';
+// import Auth from './Components/Auth/Auth';
+
+// type Props = {
+//   token: string | null
 // }
 
-// class App extends React.Component <{}, AppState>{
-//   constructor(props: any) {
+
+
+// export default class App extends React.Component<{}, Props> {
+//   constructor(props: Props) {
 //     super(props);
 //     this.state = {
 //       token: ''
 //     }
+//   }
 
-//   } 
-//     setToken= (newToken: string) => {
-//       this.setState({token: newToken})
+//   componentDidMount() {
+//     if (localStorage.getItem('token')) {
+//       this.setState({
+//         token: localStorage.getItem('token')
+//       })
 //     }
-//   render(){
-//     // const tokenProps ={token: this.state.token}
-//     return (
-//       <div className="App">
-//         <Router>
-//           <div>
-//             <ul>
-//               <li><Link to='/'>Auth</Link></li>
-              
-//             </ul>
-//           </div>
-//         <hr />
-//         <Switch>
-//           <Route exact path='/'>
-//             <Auth setToken={this.setToken}/>
-//           </Route>
-//           <Route exact path='/home'>
-//           </Route>
-//         </Switch>
-//         </Router>
+//   }
 
-//         {/* <header className="App-header">
-//           <p>{this.state.token}</p>
-//           <Auth {...tokenProps} />
-//         </header> */}
+//   updateToken = (newToken: string) => {
+//     localStorage.setItem('token', newToken);
+//     this.setState({
+//       token: newToken
+//     });
+//   }
+
+//   clearToken = () => {
+//     localStorage.clear();
+//     this.setState({
+//       token: "",
+//     });
+//   }
+
+//   logout = () => {
+//     localStorage.clear();
+//     this.setState({
+//       token: ''
+//     })
+//   }
+
+//   viewConductor = () => {
+//     return !this.state.token ? (
+//       <div>
+//         <Auth updateToken={this.updateToken.bind(this)} />
+//       </div>
+//     ) : (
+//         <Home clickLogout={this.logout.bind(this)} token={this.state.token} />)
+//   };
+
+
+//   render() {
+//     return (
+//       <div>
+//         {this.viewConductor()}
 //       </div>
 //     );
 //   }
 // }
 
-// export default App
+
+import React, { Component } from 'react';
+import Main from './Components/index';
 
 
-import React from 'react';
-import AppIndex from './appIndex';
+// type AppState = {
+//     token: string
+//     // schoolsUpdate: any
+// }
 
-function App() {
-  return (
-    <React.Fragment>
-      <AppIndex />
-    </React.Fragment>
-  );
+export default class AppIndex extends Component {
+
+    state = {
+        token: ""
+    }
+
+    componentWillMount() {
+        if (localStorage.getItem('token')) {
+            this.setState({
+                token: localStorage.getItem('token')
+            })
+        }
+        // console.log(this.state.token)
+    }
+
+
+    // componentDidMount() {
+    //     console.log(this.state.token)
+    // }
+
+
+    updateToken = (newToken: string) => {
+        localStorage.setItem('token', newToken)
+        this.setState({
+            token: newToken
+        })
+    }
+
+    clearToken = () => {
+        localStorage.clear();
+        this.setState({
+            token: ''
+        })
+    }
+
+    render() {
+        return (
+            <div className='app'>
+                <Main updateToken={this.updateToken} token={this.state.token} clearToken={this.clearToken} />
+            </div>
+        )
+    }
 }
-
-export default App;

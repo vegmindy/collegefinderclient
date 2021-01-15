@@ -1,4 +1,27 @@
 // const SchoolDisplay = (props: any) => {
+//     console.log(props)
+//     return (
+//         <div>
+//             {props.results.map((results: any) => {
+//                 return (
+//                     <div key={results.id}>
+//                             <p>
+//                                 {results}
+//                                 <br />
+//                             </p>
+//                             <p>
+//                             </p>
+//                     </div>
+//                     )
+//                 })}
+//         </div>
+//                 )
+//             };
+
+// export default SchoolDisplay;
+
+
+// const SchoolDisplay = (props: any) => {
 //     return (
 //         <div>
 //             {props.results.map((result: any) => {

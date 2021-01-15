@@ -6,7 +6,7 @@ import UpdateFavoritesIndex from './updateFavoritesIndex';
 const useStyles = makeStyles(() =>
     createStyles({
         container: {
-            marginTop: '4em',
+            marginTop: '12em',
             display: 'flex',
             justifyContent: 'center',
             alignContent: 'center',
@@ -27,7 +27,7 @@ const UpdateFavorites = (props: Props) => {
         <Container className={classes.container}>
             <div>
                 <h1>Update school</h1>
-                <UpdateFavoritesIndex token={props.token} />
+                {/* <UpdateFavoritesIndex token={props.token} /> */}
             </div>
         </Container>
     )

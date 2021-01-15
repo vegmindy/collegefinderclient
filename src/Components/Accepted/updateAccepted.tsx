@@ -23,11 +23,12 @@ interface Props {
 const UpdateAccepted = (props: Props) => {
     const classes = useStyles();
 
+
     return (
         <Container className={classes.container}>
             <div>
                 <h1>Update school</h1>
-                <UpdateAcceptedIndex token={props.token} />
+                {/* <UpdateAcceptedIndex token={props.token} /> */}
             </div>
         </Container>
     )

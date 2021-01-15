@@ -1,12 +1,26 @@
 import React, { Component } from 'react';
-import { TextField, Button} from '@material-ui/core';
 import APIURL from '../../helpers/environment';
+
+import {
+    Button,
+    FormGroup,
+    FormLabel,
+    FormControl,
+    InputLabel,
+    Box,
+    TextField,
+    Dialog,
+    DialogTitle,
+    DialogContent,
+   DialogActions,
+} from '@material-ui/core';
 
 type FavoritesState = {
     schoolName: string,
     address: string,
     inState: string,
     notes: string
+    handleopen: boolean;
 }
 
 interface Props {
@@ -21,7 +35,8 @@ export default class AddFavoritesIndex extends Component<Props, FavoritesState>{
             schoolName: '',
             address: '',
             inState: '',
-            notes: ''
+            notes: '',
+            handleopen: false,
         }
     }
 
@@ -49,7 +64,7 @@ export default class AddFavoritesIndex extends Component<Props, FavoritesState>{
         })
     }
 
-    addFavorites(e: React.FormEvent<HTMLFormElement>) {
+    handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>{
         e.preventDefault();
         fetch(`${APIURL}/favorites/addschool`, {
             method: 'POST',
@@ -67,20 +82,77 @@ export default class AddFavoritesIndex extends Component<Props, FavoritesState>{
         .then((response) => response.json())
             .then((data) => {
                 console.log(data)
+                this.setState({schoolName: "",address: "", inState: "", notes: "" })
             })
+            this.handleClose();
     }
+
+    handleOpen = () => {
+        this.setState({
+            handleopen: true,
+        });
+    };
+
+    handleClose = () => {
+        this.setState({
+            handleopen: false,
+        });
+    };
+
 
     render() {
         return (
-            <div>
-                <form onSubmit={(e)=>this.addFavorites(e)} >
-                    <TextField id="outlined-basic" label="School Name" variant="outlined" onChange={(e)=>this.setState({schoolName: (e.target.value)})} />
-                    <TextField id="outlined-basic" label="School Address" variant="outlined" onChange={(e)=>this.setState({address: (e.target.value)})} />
-                    <TextField id="outlined-basic" label="In state?(true or false)" variant="outlined" onChange={(e)=>this.setState({inState: (e.target.value)})} />
-                    <TextField id="outlined-basic" label="Notes" variant="outlined" onChange={(e)=>this.setState({notes: (e.target.value)})} />
-                    <Button type='submit' variant="contained">Add school</Button>
-                </form>
-            </div>
+        <div className="container">
+        <Button onClick={this.handleOpen} id="CreateButton" variant="outlined" >Add A School</Button>
+        <Dialog
+            fullWidth
+            open={this.state.handleopen}
+            onClose={this.handleClose}
+            aria-labelledby="scroll-dialog-title"
+            aria-describedby="scroll-dialog-description">
+
+            <DialogTitle id="scroll-dialog-title">Add School</DialogTitle>
+            <DialogContent id="Create">
+            <TextField
+                    margin="dense"
+                    label="School Name"
+                    type="text"
+                    fullWidth
+                    value={this.state.schoolName}
+                    onChange={(event) => this.setState({schoolName: event.target.value})}
+                />
+                <TextField
+                    margin="dense"
+                    label="Address"
+                    type="text"
+                    fullWidth
+                    value={this.state.address}
+                    onChange={(event) => this.setState({address: event.target.value})}
+                />
+                <TextField
+                    margin="dense"
+                    label="Extra Notes:"
+                    type="text"
+                    fullWidth
+                    value={this.state.notes}
+                    onChange={(event) => this.setState({notes: event.target.value})}
+                />
+                <TextField
+                    margin="dense"
+                    label="Is it in state?"
+                    type="text"
+                    fullWidth
+                    value={this.state.inState}
+                    onChange={(event) => {this.setState({inState: event.target.value})}}
+                />
+                <Button onClick={this.handleSubmit} id="btn">Submit</Button>
+            </DialogContent>
+            <DialogActions id="Createbtn">
+                
+                {/* <Button onClick={this.handleSubmit} >Submit</Button> */}
+            </DialogActions>
+        </Dialog>
+    </div>
         )
     }
 }
